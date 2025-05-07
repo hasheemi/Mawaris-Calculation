@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Perhitungan Mawaris</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Aplikasi Perhitungan Mawaris</h1>
+    <form id="form-waris">
+      <div class="form-row">
+        <label for="harta">Total Harta :</label>
+        <input type="text" id="harta" placeholder="Contoh: 100000000">
+      </div>
+      <div class="form-row">
+        <label for="suami">Jumlah Suami :</label>
+        <input type="number" id="suami">
+      </div>
+      <div class="form-row">
+        <label for="istri">Jumlah Istri :</label>
+        <input type="number" id="istri">
+      </div>
+      <div class="form-row">
+        <label for="ayah">Jumlah Ayah :</label>
+        <input type="number" id="ayah">
+      </div>
+      <div class="form-row">
+        <label for="ibu">Jumlah Ibu :</label>
+        <input type="number" id="ibu">
+      </div>
+      <div class="form-row">
+        <label for="anakL">Jumlah Anak Laki-laki :</label>
+        <input type="number" id="anakL">
+      </div>
+      <div class="form-row">
+        <label for="anakP">Jumlah Anak Perempuan :</label>
+        <input type="number" id="anakP">
+      </div>
+      <div class="form-row">
+        <label for="cucuL">Jumlah Cucu Laki-laki (dari anak laki-laki) :</label>
+        <input type="number" id="cucuL">
+      </div>
+      <div class="form-row">
+        <label for="cucuP">Jumlah Cucu Perempuan (dari anak laki-laki) :</label>
+        <input type="number" id="cucuP">
+      </div>
+      <div class="form-row">
+        <label for="saudaraL">Jumlah Saudara Laki-laki :</label>
+        <input type="number" id="saudaraL">
+      </div>
+      <div class="form-row">
+        <label for="saudaraP">Jumlah Saudara Perempuan :</label>
+        <input type="number" id="saudaraP">
+      </div>
+      <button type="submit">Hitung Warisan</button>
+    </form>
+
+    <div id="hasil" class="hasil"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
