@@ -3,8 +3,34 @@ function formatCurrency(value) {
     style: "currency",
     currency: "IDR",
     minimumFractionDigits: 0,
-  }).format(value);
+  }).format(Math.round(value));
 }
+
+// form input number functionallitiy
+document.querySelectorAll(".form-row.number-input").forEach((row) => {
+  const decrement = row.querySelector(".decrement");
+  const increment = row.querySelector(".increment");
+  const input = row.querySelector(".number-field");
+
+  decrement.addEventListener("click", () => {
+    input.value = Math.max(0, parseInt(input.value || "0") - 1);
+  });
+
+  increment.addEventListener("click", () => {
+    input.value = parseInt(input.value || "0") + 1;
+  });
+
+  // Hanya izinkan angka
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(/[^0-9]/g, "");
+  });
+});
+console.log(document.getElementById("harta"));
+document.getElementById("harta").addEventListener("input", function (e) {
+  document.getElementById("formatted").innerHTML = formatCurrency(
+    e.target.value
+  );
+});
 
 document.getElementById("form-waris").addEventListener("submit", function (e) {
   const catatan = [];
@@ -29,6 +55,17 @@ document.getElementById("form-waris").addEventListener("submit", function (e) {
 
   // Tampilkan hasil
   // Gugurkan cucu jika ada anak kandung
+  let hasilHTML = `<h3>Hasil Perhitungan:</h3>`;
+  if (istri > 0 && suami > 0) {
+    catatan.push(
+      "Tidak mungkin ada orang punya suami dan istri sekaligus, cek kembali"
+    );
+    hasilHTML += `<h4>Catatan Hukum:</h4><ul>${catatan
+      .map((c) => `<li>${c}</li>`)
+      .join("")}</ul>`;
+    document.getElementById("hasil").innerHTML = hasilHTML;
+    return;
+  }
   let isCucu = false;
   if (anakL > 0 || anakP > 0) {
     cucuL = 0;
@@ -105,7 +142,6 @@ document.getElementById("form-waris").addEventListener("submit", function (e) {
     sisa = 0;
   }
 
-  let hasilHTML = `<h3>Hasil Perhitungan:</h3>`;
   if (suami)
     hasilHTML += `<div class="result-item"><span>- Suami</span><span>${formatCurrency(
       bagianSuami
